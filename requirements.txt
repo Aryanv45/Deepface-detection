@@ -1,0 +1,9 @@
+tensorflow-cpu
+opencv-python
+pillow
+uvicorn
+gunicorn
+fastapi
+flask
+librosa
+python-multipart
