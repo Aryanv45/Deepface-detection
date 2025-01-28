@@ -38,9 +38,3 @@ Now our React App must be running on localhost:5173 (or on any port >5173 if it 
 
 
 
-## Screenshots
-<img src="client/public/df1.png"/>
-<img src="client/public/df2.png"/>
-<img src="client/public/df3.png"/>
-<img src="client/public/df5.png"/>
-<img src="client/public/df4.png"/>
