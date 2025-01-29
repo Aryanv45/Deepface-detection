@@ -1,20 +1,25 @@
-import cv2
 import numpy as np
 import tensorflow as tf
 import librosa
-
+import cv2
 # Load the models
-image_model_1 = tf.keras.models.load_model('./models/deepfake.h5')
-image_model_2 = tf.keras.models.load_model('./models/deepfake.keras')
-image_model_3 = tf.keras.models.load_model('./models/deepfake2.keras')
+image_models = [
+    tf.keras.models.load_model('./models/deepfake.h5'),
+    tf.keras.models.load_model('./models/deepfake.keras'),
+    tf.keras.models.load_model('./models/deepfake2.keras')
+]
 
-video_model_1 = tf.keras.models.load_model('./models/deepfake.h5')
-video_model_2 = tf.keras.models.load_model('./models/deepfake.keras')
-video_model_3 = tf.keras.models.load_model('./models/deepfake2.keras')
+video_models = [
+    tf.keras.models.load_model('./models/deepfake.h5'),
+    tf.keras.models.load_model('./models/deepfake.keras'),
+    tf.keras.models.load_model('./models/deepfake2.keras')
+]
 
-live_video_model_1 = tf.keras.models.load_model('./models/deepfake.h5')
-live_video_model_2 = tf.keras.models.load_model('./models/deepfake.keras')
-live_video_model_3 = tf.keras.models.load_model('./models/deepfake2.keras')
+live_video_models = [
+    tf.keras.models.load_model('./models/deepfake.h5'),
+    tf.keras.models.load_model('./models/deepfake.keras'),
+    tf.keras.models.load_model('./models/deepfake2.keras')
+]
 
 audio_model = tf.keras.models.load_model('./models/audio_classifier.h5')
 
@@ -36,23 +41,23 @@ def crop_face(img_arr):
         cropped_face = cv2.resize(cropped_face, (224, 224)) / 255.0
         return cropped_face
     
-    return -1
+    return None
 
-def predict_image(img_path):
+def predict_image(img_path, model_index=0):
     img_arr = cv2.imread(img_path)
     face = crop_face(img_arr)
-    if not isinstance(face, np.ndarray):
-        return -1
+    if face is None:
+        return None
     input = np.expand_dims(face, axis=0)
-    pred = image_model_1.predict(input)  # Specify the model to use
+    pred = image_models[model_index].predict(input)
     res = np.argmax(pred)
     return int(res)
 
-def predict_video(video_path):
+def predict_video(video_path, model_index=0):
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
         print("Error: Unable to open video")
-        return -1
+        return None
 
     count = 0
     while cap.isOpened():
@@ -65,19 +70,19 @@ def predict_video(video_path):
             continue
         
         face = crop_face(frame)
-        if not isinstance(face, np.ndarray):
+        if face is None:
             continue
     
         data = np.expand_dims(face, axis=0)
-        pred = np.argmax(video_model_1.predict(data))  # Specify the model to use
+        pred = np.argmax(video_models[model_index].predict(data))
         if pred == 1:
             return 1
 
     cap.release()
     return 0
 
-def predict_live_video_frame(file_path):
-    return predict_video(file_path)
+def predict_live_video_frame(file_path, model_index=0):
+    return predict_video(file_path, model_index)
 
 def preprocess_audio(file_path):
     y, sr = librosa.load(file_path, sr=None)
