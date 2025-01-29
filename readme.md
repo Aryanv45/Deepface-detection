@@ -6,7 +6,11 @@
 #### Pre-requisites: Python (>=3.10), Node.js (>=18.19)
 
 * Clone this repository
+<<<<<<< HEAD
 ```bash
+=======
+```
+>>>>>>> e6ae7fd08bf43812f260c9f7eeec6fb119e962b9
 git clone https://github.com/Aryanv45/deepface-detection.git
 cd deepfake-detection
 ```
@@ -35,3 +39,9 @@ npm run dev
 Now our React App must be running on localhost:5173 (or on any port >5173 if it is not free).
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> e6ae7fd08bf43812f260c9f7eeec6fb119e962b9
