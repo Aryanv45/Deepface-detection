@@ -9,12 +9,14 @@
 ```bash
 git clone https://github.com/Aryanv45/deepface-detection.git
 cd deepfake-detection
+*Create python virtual environment
 python3 -m venv ./venv
 source ./venv/bin/activate
-pip install -r requirements.txt
-```
 * Install frontend dependencies (present inside cilent directory)
 ```
+pip install -r requirements.txt
+```
+
 cd client
 npm install
 ```
@@ -31,10 +33,3 @@ npm run dev
 ```
 Now our React App must be running on localhost:5173 (or on any port >5173 if it is not free).
 
-
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> e6ae7fd08bf43812f260c9f7eeec6fb119e962b9
