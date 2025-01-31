@@ -7,30 +7,31 @@
 
 * Clone this repository
 ```bash
-git clone https://github.com/Aryanv45/deepface-detection.git
+git clone https://github.com/Aryanv45/deepfake-detection.git
 cd deepfake-detection
+```
 
-*Create Virtual environment
+* Create a virtual environment and activate it
 ```bash
 python3 -m venv ./venv
 source ./venv/bin/activate
 pip install -r requirements.txt
+```
 
-* Install frontend dependencies (present inside cilent directory)
+* Install client dependencies
 ```bash
 cd client
 npm install
 ```
 
 * Go to parent directory (where app.py is located) and run the FastAPI server using:
-```
+```bash
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
 ```
-Now our FastAPI server must be running on localhost:8000 (make sure that your port 8000 is free before running previous command).
+Now our FastAPI server must be running on `localhost:8000` (make sure that your port 8000 is free before running the previous command).
 
 * Go to client directory and create another terminal (where package.json is located) and run the React App using:
-```
+```bash
 npm run dev
 ```
-Now our React App must be running on localhost:5173 (or on any port >5173 if it is not free).
-
+Now our React App must be running on `localhost:5173` (or on any port >5173 if it is not free).
