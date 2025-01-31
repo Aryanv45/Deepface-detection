@@ -6,16 +6,9 @@
 #### Pre-requisites: Python (>=3.10), Node.js (>=18.19)
 
 * Clone this repository
-<<<<<<< HEAD
 ```bash
-=======
-```
->>>>>>> e6ae7fd08bf43812f260c9f7eeec6fb119e962b9
 git clone https://github.com/Aryanv45/deepface-detection.git
 cd deepfake-detection
-```
-* Setup python virtual environment and install dependencies
-```
 python3 -m venv ./venv
 source ./venv/bin/activate
 pip install -r requirements.txt
