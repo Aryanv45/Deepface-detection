@@ -9,16 +9,15 @@
 ```bash
 git clone https://github.com/Aryanv45/deepface-detection.git
 cd deepfake-detection
-* Setup python virtual environment and install dependencies
+
+*Create Virtual environment
 ```bash
 python3 -m venv ./venv
 source ./venv/bin/activate
 pip install -r requirements.txt
-* Install frontend dependencies (present inside cilent directory)
-```
-pip install -r requirements.txt
-```
 
+* Install frontend dependencies (present inside cilent directory)
+```bash
 cd client
 npm install
 ```
